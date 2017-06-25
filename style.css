@@ -1,0 +1,214 @@
+
+/*  1. Pull in the font file - do not worry about the local part of the syntax just use the woff file - 
+    
+    Name the new font GenBasR
+    */
+@font-face
+{
+    font-family: GenBasR;
+    src: url('../fonts/GenBasR-webfont.woff');
+}
+
+/* 2. Create an (element) type selector on the top level heading that uses the new font, 
+    size of 28 pixels, center the text in the element and give the text a color of  #5c2c11
+    Add a shadow 2 x 2 with a blur of 1px color #c3c3c3 */
+.GenBasR
+{
+    font-family: GenBasR;
+    font-size: 28px;
+    text-align: center;
+    color: #5c2c11;
+    text-shadow: 2px 2px 1px #c3c3c3;
+}
+
+/* 2.b add a rule where the rule states that there must be an image with a class of logo; skew it -10 degress, give it a width of 90px; and make it move all the way to the right */
+@keyframes logomove
+{
+    0% {left: 0px;}
+        100% {left: 450px;}
+}
+
+img.logo
+{
+    animation-name: logomove;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    transform: skew(-10deg);
+    width: 90px;
+    position: relative;
+}
+
+.container
+{
+    width: 600px;
+    margin: 10px auto;
+
+}
+
+section
+{
+    border: 1px solid #c3c3c3;
+    font-size: 16px;
+    font-family: Verdana;
+    width: 90%;
+    float: left;
+    margin: 20px auto;
+    padding: 20px;
+    height: auto;
+    box-sizing: content-box;
+    box-shadow: inset #dddada 16px 16px 16px;
+    /* 3. add the first property from project one that will size our element according to its content - page 203 in your book 
+     Add the property to give the box a shadow, use x, y, and the blur and spread but put the shadow inside of the box (I used 16 for all of the numbers) - use #dddada as the color */
+}
+
+/*  4.  create an element (type) selector on the image, MUST be a child of the section
+        width is 90%
+        left margin is 10 pixels and allow the right margin to fluctuate using our keyword
+    add a shadow that is 3 x 3 pixels, has a blur of 2 pixels and a spread of 3 pixels, color #c3c3c3
+    rotate the image backwards one degree
+    round the edges about 5%
+    */
+section img
+{
+    width: 90%;
+    margin-left: 10px;
+    margin-right: auto;
+    box-shadow: 3px 3px 2px 3px #c3c3c3;
+    transform: rotate(-1deg);
+    border-radius: 5%;
+}
+
+/* 5. Add a type selector here - every other paragraph should be bold */
+section p:nth-child(2n)
+{
+    font-weight: bold;
+}
+
+nav
+{
+    width: 100%;
+    margin: 0 auto;
+}
+
+    nav ul
+    {
+        list-style: none;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+        nav ul li
+        {
+            width: 40%;
+            display: inline-block;
+            padding: 10px;
+            font: 18px Verdana;
+            border: 1px #7c8760 solid;
+            margin-right: 10px;
+            text-align: center;
+            background-image: linear-gradient(white, rgba(141,156,179,0.5));
+           /* 6. add a linear gradient from white to this color 141, 156, 179 - with an opacity - (don't use "opacity) of 50% */
+        }
+
+            nav ul li a
+            {
+                text-decoration: none;
+                color: #7c8760;
+                font-size: 100%;
+                text-shadow: 1px 1px lightgray;
+                /* 7. add a shadow here 1 x 1 away, no blur, color some form of gray */
+                transition: 18px;
+                transition-duration: 2.5s;
+                transition-timing-function: ease-in-out;
+                /*8. transition the anchor tag on the size of the font, 
+                    give a duration time of 2 - 3 seconds, 
+                    your choice and use a timing to ease in and ease out */
+            }
+
+ /* 9. Add the trigger rule for the transition above - use the decendant selectors; change to a font size of 250% */
+            nav ul li a:hover
+            {
+                font-size: 250%;
+            }
+
+@media screen and (max-width: 640px)
+{
+    .container
+    {
+        width: 240px;
+    }
+    img
+    {
+        display:none;
+    }
+    nav ul li
+    {
+        display: block;
+        margin-bottom: 7px;
+        margin-top: 7px;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+    nav ul li a:hover
+    {
+        font-size:140%;
+    }
+}
+
+/* 10.  Create a media query for screen/browser sizes under 640 pixels
+        override the container class to a width of 240
+    override the image - make the image "disappear"  (HINT - this was a new property we've been using for block and inline elements
+    override the navigation list items to stack (same property above that made the image disappear) and give margins of 7px top and bottom 
+            and center the image using our keyword on margin
+
+    override the anchor tag hover, bring the font size back to 140% 
+
+       
+
+
+11.
+  UNCOMMENT THIS RULE: */
+h2
+{
+    color: rgba(8, 108, 45, 0.9);
+    animation-name: titlechanges;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-delay: 2s;
+    position: relative;
+    float: left;
+}
+
+@keyframes titlechanges
+{
+    0% {left: -800px;}
+    100% { left: 2000px;}
+}
+
+
+
+/* Animation
+
+REMOVE the inline style from the h2 at the bottom of the HTML page
+
+
+
+Create a rule using the @keyframes rule called titlechanges
+In the titlechanges animation:
+Transition on the property of left from -800px to 2000px;
+
+In the heading rule add the animation name for titlechanges
+Make sure to add the property position with a value of relative so that the left property will work
+Give the animation a duration from 6 to 8 seconds
+Choose a timing function
+What happens if you add any delay??
+You may give it an iteration of a certain number or infinite
+Choose if you want the direction to alternate.
+
+ */
+
